@@ -66,13 +66,15 @@ Make sure the appropriate driver library is installed and use
 
 ## Building on Windows
 
-UrJTAG can be compiled for Windows using either MinGW or Cygwin. The
-quickest method is to use the MinGW cross compiler on a Linux host:
+UrJTAG can be compiled for Windows using either MinGW or Cygwin.  The
+quickest method is to use the MinGW‑w64 cross compiler on a Linux host.
+This repository provides a helper script `build-windows.sh` which
+invokes `autogen.sh` and configures the build automatically:
 
 ```
-./configure --host=i586-mingw32msvc --with-ftd2xx=/path/to/ftd2xx --with-inpout32
-make
+./build-windows.sh /path/to/ftd2xx
 ```
 
-This produces a `jtag.exe` that uses `FTD2XX.DLL` for FT2232 access. For
-more details see `doc/UrJTAG.txt` inside this repository.
+The script uses the `i686-w64-mingw32` toolchain and installs the
+resulting files under `win32/`.  This produces a `jtag.exe` that uses
+`FTD2XX.DLL` for FT2232 access.  See `doc/UrJTAG.txt` for more details.
