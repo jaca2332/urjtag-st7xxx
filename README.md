@@ -47,3 +47,32 @@ To compile use following commands (Ubuntu 12.10 64 bit)
 
 
 Have fun!
+
+## FT2232 USB cable support
+
+This tree retains upstream support for FTDI FT2232 based cables. When
+linking against either **libftdi** or **ftd2xx** the following cable
+drivers become available:
+
+```
+  cable ft2232
+  cable ft2232_gnice
+  cable ft2232_flyswatter
+  ...
+```
+
+Make sure the appropriate driver library is installed and use
+`--with-ftdi` or `--with-ftd2xx` when running `configure`.
+
+## Building on Windows
+
+UrJTAG can be compiled for Windows using either MinGW or Cygwin. The
+quickest method is to use the MinGW cross compiler on a Linux host:
+
+```
+./configure --host=i586-mingw32msvc --with-ftd2xx=/path/to/ftd2xx --with-inpout32
+make
+```
+
+This produces a `jtag.exe` that uses `FTD2XX.DLL` for FT2232 access. For
+more details see `doc/UrJTAG.txt` inside this repository.
